@@ -1,5 +1,5 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
-import { Text, ComposerProvider, Flex, Avatar } from '@cmpsr/components';
+import { Text, Flex, Avatar } from '@cmpsr/components';
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -11,14 +11,6 @@ export const PLASMIC = initPlasmicLoader({
   preview: false,
 });
 
-PLASMIC.registerComponent(ComposerProvider, {
-  name: 'ComposerProvider',
-  props: {
-    theme: 'object',
-    resetCSS: 'boolean',
-    children: 'slot'
-  }
-});
 
 PLASMIC.registerComponent(Text, {
   name: 'ComposerText',
