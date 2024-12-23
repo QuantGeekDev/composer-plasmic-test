@@ -1,5 +1,5 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
-import { HelloWorld } from "./components/HelloWorld";
+import { Text, ComposerProvider } from '@cmpsr/components';
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -8,27 +8,46 @@ export const PLASMIC = initPlasmicLoader({
       token: "CBqv2iCZ4TCSyAkdKjdU8tuKDTMq2M4IhYuWMlPXBvmexxZDUN3RpoEVgYYaevmWN6iebYmx6LYADpm6w6w",
     },
   ],
-
-  // By default Plasmic will use the last published version of your project.
-  // For development, you can set preview to true, which will use the unpublished
-  // project, allowing you to see your designs without publishing.  Please
-  // only use this for development, as this is significantly slower.
   preview: false,
 });
 
-// You can register any code components that you want to use here; see
-// https://docs.plasmic.app/learn/code-components-ref/
-// And configure your Plasmic project to use the host url pointing at
-// the /plasmic-host page of your nextjs app (for example,
-// http://localhost:3000/plasmic-host).  See
-// https://docs.plasmic.app/learn/app-hosting/#set-a-plasmic-project-to-use-your-app-host
-
-// PLASMIC.registerComponent(...);
-
-PLASMIC.registerComponent(HelloWorld, {
-  name: 'HelloWorld',
+// Register the ComposerProvider component
+PLASMIC.registerComponent(ComposerProvider, {
+  name: 'ComposerProvider',
   props: {
-    verbose: 'boolean',
+    theme: 'object',
+    resetCSS: 'boolean',
+    children: 'slot'
+  }
+});
+
+// Register the Text component from @cmpsr/components
+PLASMIC.registerComponent(Text, {
+  name: 'ComposerText',
+  props: {
+    variant: {
+      type: 'choice',
+      options: [
+        'display-2xl',
+        'display-xl',
+        'display-lg',
+        'display-md', 
+        'display-sm',
+        'body-xl',
+        'body-lg',
+        'body-md',
+        'body-sm',
+        'body-xs',
+        'caption',
+        'tiny'
+      ]
+    },
+    textStyle: 'string',
+    align: {
+      type: 'choice',
+      options: ['left', 'center', 'right']
+    },
+    color: 'string',
     children: 'slot'
   }
 });

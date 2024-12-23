@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@cmpsr/components": "^7.17.0",
     "@plasmicapp/loader-nextjs": "^1.0.410",
     "next": "14.2.21",
     "react": "^18",
