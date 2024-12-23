@@ -38,7 +38,7 @@ PLASMIC.registerComponent(Text, {
       options: ['left', 'center', 'right']
     },
     color: 'string',
-    children: 'slot'
+    children: 'string'
   }
 });
 
