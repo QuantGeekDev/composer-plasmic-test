@@ -1,5 +1,5 @@
 import { initPlasmicLoader } from "@plasmicapp/loader-nextjs";
-import { Text, ComposerProvider } from '@cmpsr/components';
+import { Text, ComposerProvider, Flex, Avatar } from '@cmpsr/components';
 
 export const PLASMIC = initPlasmicLoader({
   projects: [
@@ -11,7 +11,6 @@ export const PLASMIC = initPlasmicLoader({
   preview: false,
 });
 
-// Register the ComposerProvider component
 PLASMIC.registerComponent(ComposerProvider, {
   name: 'ComposerProvider',
   props: {
@@ -21,7 +20,6 @@ PLASMIC.registerComponent(ComposerProvider, {
   }
 });
 
-// Register the Text component from @cmpsr/components
 PLASMIC.registerComponent(Text, {
   name: 'ComposerText',
   props: {
@@ -50,4 +48,46 @@ PLASMIC.registerComponent(Text, {
     color: 'string',
     children: 'slot'
   }
+});
+
+
+PLASMIC.registerComponent(Flex, {
+  name: 'ComposerFlex',
+  props: {
+    children: 'slot',
+    direction: {
+      type: 'choice',
+      options: ['row', 'column', 'row-reverse', 'column-reverse']
+    },
+    wrap: {
+      type: 'choice',
+      options: ['wrap', 'wrap-reverse', 'nowrap']
+    },
+    align: {
+      type: 'choice',
+      options: ['flex-start', 'flex-end', 'center', 'stretch', 'baseline']
+    },
+    justify: {
+      type: 'choice',
+      options: ['flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'space-evenly']
+    },
+    gap: 'string',
+    padding: 'string',
+    margin: 'string',
+    border: 'string',
+    className: 'string'
+  }
+});
+
+PLASMIC.registerComponent(Avatar, {
+  name: 'ComposerAvatar',
+  props: {
+    name: 'string',
+    src: 'string',
+    showBadge: 'boolean',
+    marginRight: 'string',
+    marginLeft: 'string',
+    marginTop: 'string',
+    marginBottom: 'string'
+  },
 });
